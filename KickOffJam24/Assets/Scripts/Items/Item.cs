@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -7,6 +8,9 @@ public class Item : MonoBehaviour
     public static event Action OnItemCompleted;
 
     [SerializeField] private Transform visualsHolder;
+
+    [Header("Timings")]
+    [SerializeField] private float betweenPuzzleDelay;
 
     private GameObject activePuzzle;
 
@@ -49,8 +53,15 @@ public class Item : MonoBehaviour
 
     private void Puzzle_OnPuzzleCompleted()
     {
+        StartCoroutine(HandlePuzzleCompletedCo());
+    }
+
+    private IEnumerator HandlePuzzleCompletedCo()
+    {
         solvedPuzzleCount++;
         Destroy(activePuzzle);
+
+        yield return new WaitForSeconds(betweenPuzzleDelay);
 
         if (solvedPuzzleCount < itemData.puzzleCount)
             SpawnPuzzle();

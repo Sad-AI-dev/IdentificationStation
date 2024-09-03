@@ -23,13 +23,6 @@ public class ItemNameLabel : MonoBehaviour
         Puzzle.OnPuzzleCompleted += Puzzle_OnPuzzleCompleted;
     }
 
-    private void Start()
-    {
-        label.text = "";
-        label.color = defaultColor;
-        puzzlesCompleted = 0;
-    }
-
     private void OnDestroy()
     {
         Item.OnItemCreated -= Item_OnItemCreated;

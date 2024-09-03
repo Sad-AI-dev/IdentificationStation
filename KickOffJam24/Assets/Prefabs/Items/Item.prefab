@@ -77,3 +77,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualsHolder: {fileID: 2934831161903690981}
+  betweenPuzzleDelay: 1

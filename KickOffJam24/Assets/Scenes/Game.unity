@@ -174,7 +174,7 @@ MonoBehaviour:
   maxPuzzles: 2
   puzzles:
   - {fileID: 2986489700031764747, guid: c87c24fe749faf44e8f58d8234720a5f, type: 3}
-  - {fileID: 2986489700031764747, guid: c87c24fe749faf44e8f58d8234720a5f, type: 3}
+  - {fileID: 5202294673708816493, guid: 6113cc6de1c68444bb6cd328e6728238, type: 3}
   itemNames:
   - Cube
   - Sphere
