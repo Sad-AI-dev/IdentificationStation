@@ -19,6 +19,13 @@ public class SimonSays : Puzzle
 
     Camera cam;
 
+    private void OnDestroy()
+    {
+        for (int i = 0; i < buttonMaterials.Count; i++)
+        {
+            buttonMaterials[i].DisableKeyword("_EMISSION");
+        }
+    }
     private void Start()
     {
         cam = Camera.main;
@@ -97,10 +104,7 @@ public class SimonSays : Puzzle
                     {
                         if (order.Count == MaxOrderCount)
                         {
-                            for (int i = 0; i < buttonMaterials.Count; i++)
-                            {
-                                buttonMaterials[i].DisableKeyword("_EMISSION");
-                            }
+
                             OnPuzzleCompleted?.Invoke();
 
                             ResetPuzzle();
