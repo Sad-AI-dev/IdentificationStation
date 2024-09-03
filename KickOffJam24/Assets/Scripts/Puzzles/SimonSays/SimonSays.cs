@@ -6,8 +6,8 @@ using UnityEngine;
 enum Colors { Red, Blue, Green, Yellow }
 public class SimonSays : Puzzle
 {
-    List<Colors> order;
-    List<Colors> orderInput;
+    List<Colors> order = new List<Colors>();
+    List<Colors> orderInput = new List<Colors>();
 
     [SerializeField] List<GameObject> buttons;
     [SerializeField] int StartingColors = 3;
@@ -21,9 +21,9 @@ public class SimonSays : Puzzle
 
     private void Start()
     {
+        cam = Camera.main;
         StartPuzzle();
         ResetInputAndPlay();
-        cam = Camera.main;
     }
     private void Update()
     {
@@ -49,16 +49,10 @@ public class SimonSays : Puzzle
             if (!inputStarted)
             {
                 //Turn on light
+                Debug.Log(order[i]);
                 yield return new WaitForSeconds(ShowColorTime);
                 //Turn off light
             }
-        }
-
-        yield return new WaitForSeconds(TimeBetweenShowingOrders);
-
-        if (!inputStarted)
-        {
-            StartCoroutine(ShowColors());
         }
     }
     void ReadPlayerInput()
@@ -98,7 +92,7 @@ public class SimonSays : Puzzle
                         else
                         {
                             order.Add((Colors)Enum.ToObject(typeof(Colors), UnityEngine.Random.Range(0, 4)));
-                            ResetInputAndPlay();
+                            Invoke(nameof(ResetInputAndPlay), 2);
                         }
                     }
                 }
