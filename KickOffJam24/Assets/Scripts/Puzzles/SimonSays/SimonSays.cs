@@ -97,7 +97,12 @@ public class SimonSays : Puzzle
                     {
                         if (order.Count == MaxOrderCount)
                         {
+                            for (int i = 0; i < buttonMaterials.Count; i++)
+                            {
+                                buttonMaterials[i].DisableKeyword("_EMISSION");
+                            }
                             OnPuzzleCompleted?.Invoke();
+
                             ResetPuzzle();
                         }
                         else
