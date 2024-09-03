@@ -11,20 +11,34 @@ public class ItemBuilder : MonoBehaviour
     public int maxPuzzles;
     public GameObject[] puzzles;
 
+    [Space]
+    public string[] itemNames;
+    public StringCollectionSO itemAdjactives;
+    public StringCollectionSO itemNouns;
+
     public ItemData BuildItemData()
     {
+        int randVisualsIndex = GetRandomVisualsIndex();
         int randPuzzleCount = GetRandomPuzzleCount();
 
         return new(
-            GetRandomVisuals(),
+            GetVisuals(randVisualsIndex),
             randPuzzleCount,
-            GetRandomPuzzles(randPuzzleCount));
+            GetRandomPuzzles(randPuzzleCount),
+            GetItemName(randVisualsIndex),
+            GetRandomItemAdjactives(randPuzzleCount),
+            GetRandomItemNoun());
     }
 
-    private GameObject GetRandomVisuals()
+    private int GetRandomVisualsIndex()
     {
-        int randIndex = Random.Range(0, itemTemplates.Length);
-        return itemTemplates[randIndex];
+        return Random.Range(0, itemTemplates.Length);
+
+    }
+
+    private GameObject GetVisuals(int index)
+    {
+        return itemTemplates[index];
     }
 
     private int GetRandomPuzzleCount()
@@ -45,8 +59,39 @@ public class ItemBuilder : MonoBehaviour
 
             randPuzzles[i] = validPuzzles[randIndex];
             validPuzzles.RemoveAt(randIndex);
+
+            if (validPuzzles.Count == 0)
+                validPuzzles = new(puzzles);
         }
 
         return randPuzzles;
+    }
+
+    private string GetItemName(int visualsIndex)
+    {
+        return itemNames[visualsIndex];
+    }
+
+    private string[] GetRandomItemAdjactives(int puzzleCount)
+    {
+        int adjactiveCount = puzzleCount - 1;
+        string[] adjactives = new string[adjactiveCount];
+
+        List<string> validAdjactives = new(itemAdjactives.collection);
+
+        for (int i = 0; i < adjactiveCount; i++)
+        {
+            int randIndex = Random.Range(0, validAdjactives.Count);
+            adjactives[i] = validAdjactives[randIndex];
+            validAdjactives.RemoveAt(randIndex);
+        }
+
+        return adjactives;
+    }
+
+    private string GetRandomItemNoun()
+    {
+        int randIndex = Random.Range(0, itemNouns.collection.Length);
+        return itemNouns.collection[randIndex];
     }
 }

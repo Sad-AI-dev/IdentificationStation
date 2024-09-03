@@ -14,6 +14,16 @@ public class Item : MonoBehaviour
 
     private int solvedPuzzleCount;
 
+    private void Start()
+    {
+        Puzzle.OnPuzzleCompleted += Puzzle_OnPuzzleCompleted;
+    }
+
+    private void OnDestroy()
+    {
+        Puzzle.OnPuzzleCompleted -= Puzzle_OnPuzzleCompleted;
+    }
+
     public void Init(ItemData itemData)
     {
         this.itemData = itemData;
