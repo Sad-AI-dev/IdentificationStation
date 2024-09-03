@@ -13,7 +13,6 @@ public class SimonSays : Puzzle
     [SerializeField] int StartingColors = 3;
     [SerializeField] int MaxOrderCount = 5;
     [SerializeField] float ShowColorTime = 0.6f;
-    [SerializeField] float TimeBetweenShowingOrders = 5;
 
     [SerializeField] bool inputStarted;
 
