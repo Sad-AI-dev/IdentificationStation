@@ -16,6 +16,7 @@ public class SimonSays : Puzzle
     [SerializeField] float ShowColorTime = 0.6f;
 
     [SerializeField] bool inputStarted;
+    [SerializeField] bool canInput = false;
 
     Camera cam;
 
@@ -26,9 +27,15 @@ public class SimonSays : Puzzle
             buttonMaterials[i].DisableKeyword("_EMISSION");
         }
     }
-    private void Start()
+
+    private void Awake()
     {
         cam = Camera.main;
+    }
+
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(1);
         StartPuzzle();
         ResetInputAndPlay();
     }
@@ -39,7 +46,6 @@ public class SimonSays : Puzzle
 
 
     }
-
 
     void StartPuzzle()
     {
@@ -63,6 +69,7 @@ public class SimonSays : Puzzle
                 //Turn off light
             }
         }
+        canInput = true;
     }
 
     IEnumerator BlinkLight(int index)
@@ -80,7 +87,7 @@ public class SimonSays : Puzzle
 
         RaycastHit hit;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canInput)
         {
             if (Physics.Raycast(cam.transform.position, mousepos - cam.transform.position, out hit, Mathf.Infinity))
             {
