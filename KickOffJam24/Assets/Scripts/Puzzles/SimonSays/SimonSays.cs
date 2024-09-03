@@ -10,6 +10,7 @@ public class SimonSays : Puzzle
     List<Colors> orderInput = new List<Colors>();
 
     [SerializeField] List<GameObject> buttons;
+    [SerializeField] List<Material> buttonMaterials;
     [SerializeField] int StartingColors = 3;
     [SerializeField] int MaxOrderCount = 5;
     [SerializeField] float ShowColorTime = 0.6f;
@@ -48,12 +49,22 @@ public class SimonSays : Puzzle
             if (!inputStarted)
             {
                 //Turn on light
-                Debug.Log(order[i]);
+                buttonMaterials[(int)order[i]].EnableKeyword("_EMISSION");
                 yield return new WaitForSeconds(ShowColorTime);
+                buttonMaterials[(int)order[i]].DisableKeyword("_EMISSION");
+                yield return new WaitForSeconds(0.2f);
                 //Turn off light
             }
         }
     }
+
+    IEnumerator BlinkLight(int index)
+    {
+        buttonMaterials[index].EnableKeyword("_EMISSION");
+        yield return new WaitForSeconds(0.1f);
+        buttonMaterials[index].DisableKeyword("_EMISSION");
+    }
+
     void ReadPlayerInput()
     {
         Vector3 mousepos = Input.mousePosition;
@@ -70,6 +81,7 @@ public class SimonSays : Puzzle
                 {
                     inputStarted = true;
 
+                    StartCoroutine(BlinkLight(buttons.IndexOf(hit.transform.gameObject)));
                     orderInput.Add((Colors)buttons.IndexOf(hit.transform.gameObject));
 
                     //Check if input wrong

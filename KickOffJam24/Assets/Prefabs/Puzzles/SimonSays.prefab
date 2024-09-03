@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2986489700031764747}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -0, y: 0.97, z: -9.394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 3423671945034713964}
   - {fileID: 4515568606559802234}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!114 &3305174229510822658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,10 +54,14 @@ MonoBehaviour:
   - {fileID: 5033739637651982788}
   - {fileID: 8146744551812551691}
   - {fileID: 6943171180040075065}
+  buttonMaterials:
+  - {fileID: 2100000, guid: 742f248e943317943bfe39869a5f3959, type: 2}
+  - {fileID: 2100000, guid: ecf2d59871f65e6448fdee881a089172, type: 2}
+  - {fileID: 2100000, guid: 220acb593b460f645884259f06ccd140, type: 2}
+  - {fileID: 2100000, guid: e9525dd1dbd272043a42d875e2ef55d2, type: 2}
   StartingColors: 3
   MaxOrderCount: 5
   ShowColorTime: 0.6
-  TimeBetweenShowingOrders: 5
   inputStarted: 0
 --- !u!1 &3738219384970315840
 GameObject:
