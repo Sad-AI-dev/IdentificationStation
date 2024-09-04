@@ -21,6 +21,7 @@ public class ItemNameLabel : MonoBehaviour
         Item.OnItemCreated += Item_OnItemCreated;
         Item.OnItemCompleted += Item_OnItemCompleted;
         Puzzle.OnPuzzleCompleted += Puzzle_OnPuzzleCompleted;
+        ItemSkipper.OnItemSkipped += ItemSkipper_OnItemSkipped;
     }
 
     private void OnDestroy()
@@ -28,6 +29,7 @@ public class ItemNameLabel : MonoBehaviour
         Item.OnItemCreated -= Item_OnItemCreated;
         Item.OnItemCompleted -= Item_OnItemCompleted;
         Puzzle.OnPuzzleCompleted -= Puzzle_OnPuzzleCompleted;
+        ItemSkipper.OnItemSkipped -= ItemSkipper_OnItemSkipped;
     }
 
     private void Item_OnItemCreated(ItemData itemData)
@@ -85,5 +87,10 @@ public class ItemNameLabel : MonoBehaviour
 
         newName += namePieces[^1];
         label.text = newName;
+    }
+
+    private void ItemSkipper_OnItemSkipped()
+    {
+        puzzlesCompleted = 0;
     }
 }

@@ -72,16 +72,16 @@ public class ItemManager : MonoBehaviour
 
     private void MoveItemToCenter()
     {
-        float speedMult = moveToCenterCurve.Evaluate(itemMovementProgress);
-        float progress = speedMult * moveSpeed * Time.deltaTime;
-
-        itemMovementProgress += progress;
-        Vector3 itemPos = Vector3.Lerp(itemSpawnPoint.position, itemFocusPoint.position, itemMovementProgress);
+        float lerpProgress = moveToCenterCurve.Evaluate(itemMovementProgress);
+        Vector3 itemPos = Vector3.Lerp(itemSpawnPoint.position, itemFocusPoint.position, lerpProgress);
         activeItem.transform.position = itemPos;
+
+        itemMovementProgress += moveSpeed * Time.deltaTime;
 
         if (itemMovementProgress < 0.99f)
             return;
 
+        activeItem.transform.position = itemFocusPoint.position;
         HandleItemArriveCenter();
     }
 
@@ -97,12 +97,11 @@ public class ItemManager : MonoBehaviour
 
     private void MoveItemToEnd()
     {
-        float speedMult = moveToEndCurve.Evaluate(itemMovementProgress);
-        float progress = speedMult * moveSpeed * Time.deltaTime;
-
-        itemMovementProgress += progress;
-        Vector3 itemPos = Vector3.Lerp(itemFocusPoint.position, itemDespawnPoint.position, itemMovementProgress);
+        float lerpProgress = moveToEndCurve.Evaluate(itemMovementProgress);
+        Vector3 itemPos = Vector3.Lerp(itemFocusPoint.position, itemDespawnPoint.position, lerpProgress);
         activeItem.transform.position = itemPos;
+
+        itemMovementProgress += moveSpeed * Time.deltaTime;
 
         if (itemMovementProgress < 0.99f)
             return;
@@ -134,6 +133,8 @@ public class ItemManager : MonoBehaviour
     {
         if (activeItem == null)
             return;
+
+
 
         activeItem.SkipItem();
         Item_OnItemCompleted();
