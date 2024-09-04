@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
 
     public int score { get; private set; }
 
-    private float multiplier = 1f;
+    private float multiplier;
 
     private void Awake()
     {
@@ -33,6 +33,10 @@ public class ScoreManager : MonoBehaviour
             instance = this;
             transform.SetParent(null);
             DontDestroyOnLoad(gameObject);
+
+            // Reset Score
+            score = 0;
+            multiplier = 1f;
         }
     }
 
@@ -45,31 +49,40 @@ public class ScoreManager : MonoBehaviour
 
     private void Item_OnItemCompleted()
     {
-        score += Mathf.FloorToInt(itemReward * multiplier);
-        OnScoreChanged?.Invoke(score);
+        int scoreToAdd = Mathf.FloorToInt(itemReward * multiplier);
+        SetScore(score + scoreToAdd);
 
-        multiplier += itemMultReward;
-        OnMultiplierChanged?.Invoke(multiplier);
+        SetMultiplier(multiplier + itemMultReward);
     }
 
     private void Puzzle_OnPuzzleCompleted()
     {
-        score += Mathf.FloorToInt(puzzleReward * multiplier);
-        OnScoreChanged?.Invoke(score);
+        int scoreToAdd = Mathf.FloorToInt(puzzleReward * multiplier);
+        SetScore(score + scoreToAdd);
 
-        multiplier += puzzleMultReward;
-        OnMultiplierChanged?.Invoke(multiplier);
+        SetMultiplier(multiplier + puzzleMultReward);
     }
 
     private void Puzzle_OnMistakeMade()
     {
-        multiplier = 0;
-        OnMultiplierChanged?.Invoke(multiplier);
+        SetMultiplier(0);
     }
 
     public void ResetScore()
     {
         score = 0;
         multiplier = 1f;
+    }
+
+    private void SetScore(int newScore)
+    {
+        score = newScore;
+        OnScoreChanged?.Invoke(score);
+    }
+
+    private void SetMultiplier(float newMultiplier)
+    {
+        multiplier = newMultiplier;
+        OnMultiplierChanged?.Invoke(multiplier);
     }
 }
