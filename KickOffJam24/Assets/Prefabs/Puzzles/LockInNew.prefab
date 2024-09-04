@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 3214474591638713094}
   - component: {fileID: 5341196749602140174}
   - component: {fileID: 6560910788418628925}
+  - component: {fileID: 2368700432386097585}
   m_Layer: 0
   m_Name: Orb1
   m_TagString: Untagged
@@ -202,6 +203,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2368700432386097585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980746481232159916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dce5a6ee29ccbf488f3973080225bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0
+  bobRange: 0
+  rotationSpeed: 30
+  rotationVector: {x: 1, y: 1, z: 0}
 --- !u!1 &7341166294420079275
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +230,7 @@ GameObject:
   - component: {fileID: 5478713664352026677}
   - component: {fileID: 3475164357241610404}
   - component: {fileID: 1698541686076349893}
+  - component: {fileID: 2114148052439567538}
   m_Layer: 0
   m_Name: Orb2
   m_TagString: Untagged
@@ -285,6 +303,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2114148052439567538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7341166294420079275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dce5a6ee29ccbf488f3973080225bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0
+  bobRange: 0
+  rotationSpeed: 50
+  rotationVector: {x: 0, y: 1, z: -1}
 --- !u!1001 &2046326284820138446
 PrefabInstance:
   m_ObjectHideFlags: 0

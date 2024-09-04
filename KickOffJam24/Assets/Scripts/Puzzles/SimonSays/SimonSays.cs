@@ -37,11 +37,13 @@ public class SimonSays : Puzzle
 
     private IEnumerator Start()
     {
+        yield return null;
         // Turn off emission
         for (int i = 0; i < buttonMaterials.Count; i++)
             buttonMaterials[i].DisableKeyword("_EMISSION");
 
         yield return new WaitForSeconds(1);
+
         StartPuzzle();
         ResetInputAndPlay();
     }
