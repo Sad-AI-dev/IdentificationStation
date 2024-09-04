@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LeaderBoard : MonoBehaviour
@@ -60,20 +61,30 @@ public class LeaderBoard : MonoBehaviour
     // Register Score
     public bool TryRegisterScore(int score)
     {
+        bool success = false;
+
+        // Compile Leaderboard
+        List<int> highScores = new(5);
+
+        for (int i = 0; i < 5; i++)
+            highScores.Add(PlayerPrefs.GetInt("HighScore" + i));
+
+        // Update Leaderboard
         for (int i = 0; i < 5; i++)
         {
-            // Get Score
-            string scoreAddress = "HighScore" + i;
-            int highScore = PlayerPrefs.GetInt(scoreAddress);
-
-            if (score <= highScore)
+            if (highScores[i] >= score)
                 continue;
 
-            PlayerPrefs.SetInt(scoreAddress, score);
+            highScores.Insert(i, score);
             registeredScore = score;
-            return true;
+            success = true;
+            break;
         }
 
-        return false;
+        // Re-compile Leaderboard
+        for (int i = 0; i < 5; i++)
+            PlayerPrefs.SetInt("HighScore" + i, highScores[i]);
+
+        return success;
     }
 }

@@ -4,7 +4,10 @@ public class ItemBobber : MonoBehaviour
 {
     [SerializeField] private float amplitude;
     [SerializeField] private float bobRange;
+
+    [Space]
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private Vector3 rotationVector;
 
     private float baseYPos;
 
@@ -27,6 +30,7 @@ public class ItemBobber : MonoBehaviour
 
     private void Rotate()
     {
-        transform.Rotate(new(0, rotationSpeed * Time.deltaTime, 0));
+        Vector3 toRotate = rotationVector * (rotationSpeed * Time.deltaTime);
+        transform.Rotate(toRotate);
     }
 }
