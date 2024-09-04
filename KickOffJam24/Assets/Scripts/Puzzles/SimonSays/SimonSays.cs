@@ -1,3 +1,4 @@
+using DevKit;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,13 +13,12 @@ public class SimonSays : Puzzle
     [SerializeField] List<GameObject> buttons;
     [SerializeField] List<Material> buttonMaterials;
     [SerializeField] List<Light> buttonLights;
-    [SerializeField] List<AudioSource> buttonAudio;
     [SerializeField] int StartingColors = 3;
     [SerializeField] int MaxOrderCount = 5;
     [SerializeField] float ShowColorTime = 0.6f;
 
-    [SerializeField] bool inputStarted;
-    [SerializeField] bool canInput = false;
+    bool inputStarted;
+    bool canInput = false;
 
     Camera cam;
 
@@ -59,6 +59,7 @@ public class SimonSays : Puzzle
     }
     IEnumerator ShowColors()
     {
+        canInput = false;
         for (int i = 0; i < order.Count; i++)
         {
             if (!inputStarted)
@@ -66,7 +67,7 @@ public class SimonSays : Puzzle
                 //Turn on light
                 buttonMaterials[(int)order[i]].EnableKeyword("_EMISSION");
                 buttonLights[(int)order[i]].gameObject.SetActive(true);
-                buttonAudio[(int)order[i]].PlayOneShot(buttonAudio[(int)order[i]].clip);
+                AudioManager.instance.PlayOneShot(order[i].ToString());
 
                 yield return new WaitForSeconds(ShowColorTime);
                 buttonMaterials[(int)order[i]].DisableKeyword("_EMISSION");
@@ -104,12 +105,14 @@ public class SimonSays : Puzzle
                     inputStarted = true;
 
                     StartCoroutine(BlinkLight(buttons.IndexOf(hit.transform.gameObject)));
+                    AudioManager.instance.PlayOneShot(((Colors)buttons.IndexOf(hit.transform.gameObject)).ToString());
                     orderInput.Add((Colors)buttons.IndexOf(hit.transform.gameObject));
 
                     //Check if input wrong
                     if (order[orderInput.Count - 1] != orderInput[orderInput.Count - 1])
                     {
                         //Reset if not
+                        OnMistakeMade?.Invoke();
                         ResetInputAndPlay();
 
                     }

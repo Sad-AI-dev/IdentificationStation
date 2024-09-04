@@ -45,6 +45,7 @@ public class LockIn : Puzzle
             }
             else
             {
+                OnMistakeMade?.Invoke();
                 StartCoroutine(resetBar());
             }
         }
