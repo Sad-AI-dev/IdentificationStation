@@ -1,3 +1,4 @@
+using DevKit;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public class ItemSkipper : MonoBehaviour
 
         itemSkips--;
         OnItemSkipped?.Invoke();
+        AudioManager.instance.Stop("Hum");
 
         if (itemSkips == 0)
             button.interactable = false;
