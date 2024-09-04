@@ -3,11 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string sceneName;
+    public string environmentSceneName;
+    public string gameSceneName;
 
     public void OnStartClicked()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadSceneAsync(environmentSceneName);
+        SceneManager.LoadSceneAsync(gameSceneName, LoadSceneMode.Additive);
     }
 
     public void OnQuitClicked()
