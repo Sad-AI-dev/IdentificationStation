@@ -11,6 +11,8 @@ public class SimonSays : Puzzle
 
     [SerializeField] List<GameObject> buttons;
     [SerializeField] List<Material> buttonMaterials;
+    [SerializeField] List<Light> buttonLights;
+    [SerializeField] List<AudioSource> buttonAudio;
     [SerializeField] int StartingColors = 3;
     [SerializeField] int MaxOrderCount = 5;
     [SerializeField] float ShowColorTime = 0.6f;
@@ -63,8 +65,14 @@ public class SimonSays : Puzzle
             {
                 //Turn on light
                 buttonMaterials[(int)order[i]].EnableKeyword("_EMISSION");
+                buttonLights[(int)order[i]].gameObject.SetActive(true);
+                buttonAudio[(int)order[i]].PlayOneShot(buttonAudio[(int)order[i]].clip);
+
                 yield return new WaitForSeconds(ShowColorTime);
                 buttonMaterials[(int)order[i]].DisableKeyword("_EMISSION");
+                buttonLights[(int)order[i]].gameObject.SetActive(false);
+
+
                 yield return new WaitForSeconds(0.2f);
                 //Turn off light
             }
