@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
         enabled = false;
 
         // Load Next Scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public float GetCurrentTimer()

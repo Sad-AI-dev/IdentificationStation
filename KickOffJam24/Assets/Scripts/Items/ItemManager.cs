@@ -134,8 +134,6 @@ public class ItemManager : MonoBehaviour
         if (activeItem == null)
             return;
 
-
-
         activeItem.SkipItem();
         Item_OnItemCompleted();
     }

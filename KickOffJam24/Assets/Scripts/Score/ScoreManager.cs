@@ -65,7 +65,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Puzzle_OnMistakeMade()
     {
-        SetMultiplier(0);
+        SetMultiplier(1f);
     }
 
     public void ResetScore()
