@@ -1,3 +1,4 @@
+using DevKit;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -53,6 +54,7 @@ public class Item : MonoBehaviour
 
     private void Puzzle_OnPuzzleCompleted()
     {
+        AudioManager.instance.PlayOneShot("Completed");
         StartCoroutine(HandlePuzzleCompletedCo());
     }
 

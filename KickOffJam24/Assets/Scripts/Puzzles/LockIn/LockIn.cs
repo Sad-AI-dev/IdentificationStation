@@ -1,3 +1,4 @@
+using DevKit;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +41,7 @@ public class LockIn : Puzzle
                     return;
                 }
 
+                AudioManager.instance.PlayOneShot("Click");
                 currentLock++;
                 playerBarSpeed *= 1.5f;
             }

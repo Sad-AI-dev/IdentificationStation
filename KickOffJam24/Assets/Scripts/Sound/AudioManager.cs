@@ -1,6 +1,7 @@
 using UnityEngine;
 
-namespace DevKit {
+namespace DevKit
+{
     [AddComponentMenu("DevKit/Systems/Sounds/Audio Manager")]
     public class AudioManager : MonoBehaviour
     {
@@ -11,10 +12,12 @@ namespace DevKit {
 
         private void Awake()
         {
-            if (instance != null && instance != this) {
+            if (instance != null && instance != this)
+            {
                 Destroy(gameObject);
             }
-            else {
+            else
+            {
                 instance = this;
                 InitializeSounds();
             }
@@ -22,7 +25,8 @@ namespace DevKit {
 
         private void InitializeSounds()
         {
-            foreach (Sound s in sounds.Values) {
+            foreach (Sound s in sounds.Values)
+            {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.SetupSource();
             }
@@ -31,7 +35,8 @@ namespace DevKit {
         //=============== play sound fx ===============
         public void Play(string name)
         {
-            if (sounds.ContainsKey(name)) {
+            if (sounds.ContainsKey(name))
+            {
                 sounds[name].source.Play();
             }
             //debug info
@@ -40,11 +45,33 @@ namespace DevKit {
 
         public void PlayOneShot(string name)
         {
-            if (sounds.ContainsKey(name)) {
+            if (sounds.ContainsKey(name))
+            {
                 sounds[name].source.PlayOneShot(sounds[name].clip);
             }
             //debug info
             else { Debug.LogError(transform.name + " contains no sound for " + name); }
         }
+
+        //=============== change volume ===============
+        public void SetVolume(string name, float volume)
+        {
+            if (sounds.ContainsKey(name))
+            {
+                sounds[name].source.volume = volume;
+            }
+            else { Debug.LogError(transform.name + " contains no sound for " + name); }
+        }
+
+        public void Stop(string name)
+        {
+            if (sounds.ContainsKey(name))
+            {
+                sounds[name].source.Stop();
+            }
+            //debug info
+            else { Debug.LogError(transform.name + " contains no sound for " + name); }
+        }
+
     }
 }

@@ -1,3 +1,4 @@
+using DevKit;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,10 @@ public class Fishing : Puzzle
     [SerializeField] Slider CompletionSlider;
 
     [SerializeField] int min, max;
+    int maxDistance;
+    float distance;
+    float distanceFraction;
+    float volume;
     [SerializeField] float barSpeed = 8;
     [SerializeField] float targetSpeed = 6;
     [SerializeField] float progressionSpeed = 2.5f;
@@ -20,16 +25,25 @@ public class Fishing : Puzzle
 
     private void Start()
     {
+        maxDistance = max * 2;
         targetPos = StartCoroutine(targetChangePos());
+        AudioManager.instance.Play("Hum");
     }
 
     private void Update()
     {
         if (CompletionSlider.value >= CompletionSlider.maxValue)
         {
+            AudioManager.instance.Stop("Hum");
             OnPuzzleCompleted?.Invoke();
             completed = true;
         }
+
+        distance = Mathf.Abs(target.transform.localPosition.y - playerBar.transform.localPosition.y);
+        distanceFraction = distance / maxDistance;
+        volume = (1 - distanceFraction) / 10;
+
+        AudioManager.instance.SetVolume("Hum", volume);
     }
 
     private void FixedUpdate()
