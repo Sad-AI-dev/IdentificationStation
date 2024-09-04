@@ -111,7 +111,7 @@ MonoBehaviour:
         clip: {fileID: 8300000, guid: afd54db387a75234da365a0e86037c7c, type: 3}
         output: {fileID: 0}
         priority: 128
-        volume: 0.3
+        volume: 0.5
         pitch: 1
         bypassEffects: 0
         bypassListenerEffects: 0
@@ -121,6 +121,18 @@ MonoBehaviour:
     - key: Completed
       value:
         clip: {fileID: 8300000, guid: cc2ac75972cb1a949a990084d60efc1e, type: 3}
+        output: {fileID: 0}
+        priority: 128
+        volume: 0.3
+        pitch: 1
+        bypassEffects: 1
+        bypassListenerEffects: 1
+        bypassReverbZones: 1
+        source: {fileID: 0}
+        setBaseValues: 1
+    - key: Woosh
+      value:
+        clip: {fileID: 8300000, guid: 37e0d8e9c0ada974695f5fd97affab14, type: 3}
         output: {fileID: 0}
         priority: 128
         volume: 0.3

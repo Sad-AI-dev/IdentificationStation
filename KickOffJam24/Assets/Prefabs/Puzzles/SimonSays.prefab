@@ -102,7 +102,7 @@ MonoBehaviour:
   - {fileID: 2458154393013887784}
   StartingColors: 3
   MaxOrderCount: 5
-  ShowColorTime: 0.6
+  ShowColorTime: 0.4
 --- !u!1 &3283115482298560344
 GameObject:
   m_ObjectHideFlags: 0

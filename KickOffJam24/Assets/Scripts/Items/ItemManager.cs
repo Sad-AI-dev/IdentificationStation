@@ -1,3 +1,4 @@
+using DevKit;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
@@ -49,6 +50,7 @@ public class ItemManager : MonoBehaviour
 
         activeItem.Init(itemBuilder.BuildItemData());
 
+        AudioManager.instance.PlayOneShot("Woosh");
         itemIsMoving = true;
         itemMovementProgress = 0;
     }
@@ -65,9 +67,14 @@ public class ItemManager : MonoBehaviour
     private void MoveItem()
     {
         if (itemIsComplete)
+        {
             MoveItemToEnd();
+        }
         else
+        {
             MoveItemToCenter();
+
+        }
     }
 
     private void MoveItemToCenter()
@@ -126,6 +133,7 @@ public class ItemManager : MonoBehaviour
         itemMovementProgress = 0;
         itemIsComplete = true;
         itemIsMoving = true;
+        AudioManager.instance.PlayOneShot("Woosh");
     }
 
     // ========== Skip Item ===========
@@ -136,5 +144,6 @@ public class ItemManager : MonoBehaviour
 
         activeItem.SkipItem();
         Item_OnItemCompleted();
+
     }
 }

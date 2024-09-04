@@ -270,8 +270,8 @@ MonoBehaviour:
   target: {fileID: 1212564023685144032}
   playerBar: {fileID: 1855171057088234166}
   CompletionSlider: {fileID: 6113352585569755998}
-  min: -313
-  max: 313
+  min: -288
+  max: 288
   barSpeed: 8
   targetSpeed: 6
   progressionSpeed: 2.5
@@ -388,7 +388,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &246992258932000085
 CanvasRenderer:
