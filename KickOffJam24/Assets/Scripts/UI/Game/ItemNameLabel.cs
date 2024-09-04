@@ -7,7 +7,7 @@ public class ItemNameLabel : MonoBehaviour
     [SerializeField] private TMP_Text label;
 
     [Header("Timings")]
-    [SerializeField] private float textDisappearDelay;
+    [SerializeField] private float textAppearDelay;
 
     [Header("Colors")]
     [SerializeField] private Color defaultColor;
@@ -35,6 +35,15 @@ public class ItemNameLabel : MonoBehaviour
     private void Item_OnItemCreated(ItemData itemData)
     {
         this.itemData = itemData;
+        StartCoroutine(ItemCreatedCo());
+    }
+
+    private IEnumerator ItemCreatedCo()
+    {
+        label.text = "";
+        puzzlesCompleted = 0;
+
+        yield return new WaitForSeconds(textAppearDelay);
 
         string itemName = itemData.name + " of ";
 
@@ -49,17 +58,8 @@ public class ItemNameLabel : MonoBehaviour
 
     private void Item_OnItemCompleted()
     {
-        StartCoroutine(ItemCompleteCo());
-    }
-
-    private IEnumerator ItemCompleteCo()
-    {
         label.color = successColor;
 
-        yield return new WaitForSeconds(textDisappearDelay);
-
-        label.text = "";
-        puzzlesCompleted = 0;
     }
 
     private void Puzzle_OnPuzzleCompleted()
