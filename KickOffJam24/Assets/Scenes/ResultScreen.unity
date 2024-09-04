@@ -133,8 +133,9 @@ GameObject:
   - component: {fileID: 119608465}
   - component: {fileID: 119608467}
   - component: {fileID: 119608466}
+  - component: {fileID: 119608468}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: ScoreNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -256,6 +257,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119608464}
   m_CullTransparentMesh: 1
+--- !u!114 &119608468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119608464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c347c7fe3794741b3ec292b2b32190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 119608466}
+--- !u!1 &269867872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269867874}
+  - component: {fileID: 269867873}
+  m_Layer: 5
+  m_Name: ScoreResetter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &269867873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269867872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142ccf17c7cde3044bb25c2d1e7df41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &269867874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269867872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &337153845
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,8 +559,9 @@ GameObject:
   - component: {fileID: 1246488321}
   - component: {fileID: 1246488320}
   - component: {fileID: 1246488319}
+  - component: {fileID: 1246488322}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonRestart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,6 +631,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 269867873}
+        m_TargetAssemblyTypeName: ScoreResetter, Assembly-CSharp
+        m_MethodName: ResetScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 400995896}
         m_TargetAssemblyTypeName: ResultScreen, Assembly-CSharp
         m_MethodName: OnReplayClicked
@@ -622,6 +693,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246488317}
   m_CullTransparentMesh: 1
+--- !u!114 &1246488322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246488317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5290397cef8dadf42bc00eaca0bf851e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1246488319}
+  unlockDelay: 0.5
 --- !u!1 &1287618712
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +719,7 @@ GameObject:
   - component: {fileID: 1287618715}
   - component: {fileID: 1287618714}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ScoreLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1049,8 +1134,9 @@ GameObject:
   - component: {fileID: 1967787476}
   - component: {fileID: 1967787475}
   - component: {fileID: 1967787474}
+  - component: {fileID: 1967787477}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ButtonMainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1120,6 +1206,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 269867873}
+        m_TargetAssemblyTypeName: ScoreResetter, Assembly-CSharp
+        m_MethodName: ResetScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 400995896}
         m_TargetAssemblyTypeName: ResultScreen, Assembly-CSharp
         m_MethodName: OnReturnToMainMenuClicked
@@ -1170,6 +1268,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967787472}
   m_CullTransparentMesh: 1
+--- !u!114 &1967787477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967787472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5290397cef8dadf42bc00eaca0bf851e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1967787474}
+  unlockDelay: 0.5
 --- !u!1 &2059407997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,3 +1516,4 @@ SceneRoots:
   - {fileID: 337153847}
   - {fileID: 400995900}
   - {fileID: 1916609760}
+  - {fileID: 269867874}

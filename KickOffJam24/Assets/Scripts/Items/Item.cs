@@ -68,4 +68,12 @@ public class Item : MonoBehaviour
         else
             OnItemCompleted?.Invoke();
     }
+
+    public void SkipItem()
+    {
+        if (activePuzzle == null)
+            return;
+
+        Destroy(activePuzzle);
+    }
 }

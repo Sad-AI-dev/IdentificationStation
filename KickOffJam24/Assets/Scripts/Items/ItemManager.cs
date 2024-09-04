@@ -28,6 +28,7 @@ public class ItemManager : MonoBehaviour
     private void Awake()
     {
         Item.OnItemCompleted += Item_OnItemCompleted;
+        ItemSkipper.OnItemSkipped += ItemSkipper_OnItemSkipped;
     }
 
     private void Start()
@@ -38,6 +39,7 @@ public class ItemManager : MonoBehaviour
     private void OnDestroy()
     {
         Item.OnItemCompleted -= Item_OnItemCompleted;
+        ItemSkipper.OnItemSkipped -= ItemSkipper_OnItemSkipped;
     }
 
     private void SpawnNextItem()
@@ -125,5 +127,15 @@ public class ItemManager : MonoBehaviour
         itemMovementProgress = 0;
         itemIsComplete = true;
         itemIsMoving = true;
+    }
+
+    // ========== Skip Item ===========
+    public void ItemSkipper_OnItemSkipped()
+    {
+        if (activeItem == null)
+            return;
+
+        activeItem.SkipItem();
+        Item_OnItemCompleted();
     }
 }

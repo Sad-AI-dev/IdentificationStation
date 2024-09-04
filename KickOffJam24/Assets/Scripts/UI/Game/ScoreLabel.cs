@@ -16,7 +16,10 @@ public class ScoreLabel : MonoBehaviour
         ScoreManager.instance.OnMultiplierChanged += ScoreManager_OnMultiplierChanged;
 
         scoreBaseString = scoreLabel.text;
+        scoreLabel.text = scoreBaseString + "0";
+
         multiplierBaseString = multiplierLabel.text;
+        multiplierLabel.text = multiplierBaseString + "1";
     }
 
     private void OnDestroy()
