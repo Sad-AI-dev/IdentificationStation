@@ -792,7 +792,7 @@ MonoBehaviour:
   puzzleReward: 100
   itemReward: 500
   puzzleMultReward: 0.2
-  itemMultReward: 0.1
+  itemMultReward: 0
 --- !u!1 &926382988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,6 +1122,7 @@ GameObject:
   - component: {fileID: 1028349716}
   - component: {fileID: 1028349715}
   - component: {fileID: 1028349717}
+  - component: {fileID: 1028349718}
   m_Layer: 5
   m_Name: ScoreLabel
   m_TagString: Untagged
@@ -1260,6 +1261,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!95 &1028349718
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028349713}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b15ddc0b0aea5e844be4d25442c2690b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1156814982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreLabel: {fileID: 1028349715}
   multiplierLabel: {fileID: 1739600916}
+  scoreAnimator: {fileID: 1028349718}
+  multiplierAnimator: {fileID: 1739600918}
 --- !u!1 &1427707307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,6 +1777,7 @@ GameObject:
   - component: {fileID: 1739600915}
   - component: {fileID: 1739600917}
   - component: {fileID: 1739600916}
+  - component: {fileID: 1739600918}
   m_Layer: 5
   m_Name: MultiplierLabel
   m_TagString: Untagged
@@ -1876,6 +1901,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739600914}
   m_CullTransparentMesh: 1
+--- !u!95 &1739600918
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739600914}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ab9fbca9ef982d4e8e7c5371b4ae59e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2070193181
 GameObject:
   m_ObjectHideFlags: 0

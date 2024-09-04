@@ -52,13 +52,16 @@ public class ScoreManager : MonoBehaviour
         int scoreToAdd = Mathf.FloorToInt(itemReward * multiplier);
         SetScore(score + scoreToAdd);
 
+        if (itemMultReward <= 0)
+            return;
+
         SetMultiplier(multiplier + itemMultReward);
     }
 
     private void Puzzle_OnPuzzleCompleted()
     {
-        int scoreToAdd = Mathf.FloorToInt(puzzleReward * multiplier);
-        SetScore(score + scoreToAdd);
+        int multToAdd = Mathf.FloorToInt(puzzleReward * multiplier);
+        SetScore(score + multToAdd);
 
         SetMultiplier(multiplier + puzzleMultReward);
     }
@@ -82,6 +85,9 @@ public class ScoreManager : MonoBehaviour
 
     private void SetMultiplier(float newMultiplier)
     {
+        if (Mathf.Abs(multiplier - newMultiplier) <= 0f)
+            return;
+
         multiplier = newMultiplier;
         OnMultiplierChanged?.Invoke(multiplier);
     }
