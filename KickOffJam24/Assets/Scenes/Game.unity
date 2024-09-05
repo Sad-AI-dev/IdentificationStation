@@ -379,7 +379,7 @@ MonoBehaviour:
   puzzles:
   - {fileID: 2986489700031764747, guid: c87c24fe749faf44e8f58d8234720a5f, type: 3}
   - {fileID: 5202294673708816493, guid: 6113cc6de1c68444bb6cd328e6728238, type: 3}
-  - {fileID: 144116827340963691, guid: 81b5bba1b4d9da14f9ed9b080a53ecc8, type: 3}
+  - {fileID: 6264274348783758401, guid: 01ec61395f0072642b668eaf83e27e54, type: 3}
   itemNames:
   - Potion
   - Broom
