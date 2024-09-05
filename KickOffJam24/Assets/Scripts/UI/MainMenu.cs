@@ -1,3 +1,4 @@
+using DevKit;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,10 +11,12 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(environmentSceneName);
         SceneManager.LoadSceneAsync(gameSceneName, LoadSceneMode.Additive);
+        AudioManager.instance.PlayOneShot("Blue");
     }
 
     public void OnQuitClicked()
     {
+        AudioManager.instance.PlayOneShot("Red");
         Application.Quit();
     }
 }
