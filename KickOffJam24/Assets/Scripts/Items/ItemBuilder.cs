@@ -16,6 +16,8 @@ public class ItemBuilder : MonoBehaviour
     public StringCollectionSO itemAdjactives;
     public StringCollectionSO itemNouns;
 
+    private int lastChosenTemplate;
+
     public ItemData BuildItemData()
     {
         int randVisualsIndex = GetRandomVisualsIndex();
@@ -32,8 +34,19 @@ public class ItemBuilder : MonoBehaviour
 
     private int GetRandomVisualsIndex()
     {
-        return Random.Range(0, itemTemplates.Length);
+        int randVisualsIndex = Random.Range(0, itemTemplates.Length);
 
+        // prevent picking the same item 2 times in a row
+        if (randVisualsIndex == lastChosenTemplate)
+        {
+            randVisualsIndex++;
+
+            if (randVisualsIndex >= itemTemplates.Length)
+                randVisualsIndex = 0;
+        }
+
+        lastChosenTemplate = randVisualsIndex;
+        return randVisualsIndex;
     }
 
     private GameObject GetVisuals(int index)
