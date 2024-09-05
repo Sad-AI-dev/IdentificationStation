@@ -14,6 +14,11 @@ public class MainMenu : MonoBehaviour
         AudioManager.instance.PlayOneShot("Blue");
     }
 
+    public void OnHowToPlayClicked()
+    {
+        AudioManager.instance.PlayOneShot("Blue");
+    }
+
     public void OnQuitClicked()
     {
         AudioManager.instance.PlayOneShot("Red");
