@@ -142,3 +142,15 @@ MonoBehaviour:
         bypassReverbZones: 0
         source: {fileID: 0}
         setBaseValues: 1
+    - key: SequenceComplete
+      value:
+        clip: {fileID: 8300000, guid: ac88855b10824004fb4d61d31e6604e9, type: 3}
+        output: {fileID: 0}
+        priority: 128
+        volume: 0.3
+        pitch: 1
+        bypassEffects: 0
+        bypassListenerEffects: 0
+        bypassReverbZones: 0
+        source: {fileID: 0}
+        setBaseValues: 1

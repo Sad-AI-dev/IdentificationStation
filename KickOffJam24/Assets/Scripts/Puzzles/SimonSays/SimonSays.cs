@@ -132,6 +132,7 @@ public class SimonSays : Puzzle
                         }
                         else
                         {
+                            AudioManager.instance.PlayOneShot("SequenceComplete");
                             order.Add((Colors)Enum.ToObject(typeof(Colors), UnityEngine.Random.Range(0, 4)));
                             Invoke(nameof(ResetInputAndPlay), 2);
                         }
