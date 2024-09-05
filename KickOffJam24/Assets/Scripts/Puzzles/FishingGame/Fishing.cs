@@ -17,6 +17,7 @@ public class Fishing : Puzzle
     [SerializeField] float targetSpeed = 6;
     [SerializeField] float progressionSpeed = 2.5f;
     [SerializeField] float regressionSpeed = 1;
+    [SerializeField] float SoundMultiplier = 2;
 
     bool completed = false;
 
@@ -41,7 +42,7 @@ public class Fishing : Puzzle
 
         distance = Mathf.Abs(target.transform.localPosition.y - playerBar.transform.localPosition.y);
         distanceFraction = distance / maxDistance;
-        volume = (1 - distanceFraction) / 10;
+        volume = ((1 - distanceFraction) / 10) * SoundMultiplier;
 
         AudioManager.instance.SetVolume("Hum", volume);
     }

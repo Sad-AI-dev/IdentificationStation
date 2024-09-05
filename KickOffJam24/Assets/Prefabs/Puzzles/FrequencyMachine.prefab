@@ -219,6 +219,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -163
       objectReference: {fileID: 0}
+    - target: {fileID: 1496240213614826012, guid: 6113cc6de1c68444bb6cd328e6728238,
+        type: 3}
+      propertyPath: SoundMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2012249861228049990, guid: 6113cc6de1c68444bb6cd328e6728238,
         type: 3}
       propertyPath: m_Pivot.x
